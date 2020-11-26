@@ -1,0 +1,3 @@
+#First React app
+
+Some information...
