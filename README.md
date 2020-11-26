@@ -1,3 +1,3 @@
-# First React app
+# First mern stack app
 
 Some information...
