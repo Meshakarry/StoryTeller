@@ -1,4 +1,5 @@
 const mongoose =require('mongoose');
+const {ObjectId}=mongoose.Schema.Types;
 
 const postModel=new mongoose.Schema({
     title : {
@@ -16,7 +17,13 @@ const postModel=new mongoose.Schema({
     date : {
         type:Date,
         required: true
-    }
+    },
+    User: 
+        {
+            type: ObjectId,
+            ref :'User'
+       }
+    
  }
  ,{timestamps : true});
 

@@ -8,16 +8,19 @@ router.route('/').get((req,res)=>{
 
 router.route('/add').post((req,res)=>{
 
-    // const title=req.body.title;
-    // const bodi=req.body.bodi;
-    // const date=req.body.date
+    const title=req.body.title;
+    const bodi=req.body.bodi;
+    const date=Date(req.body.date);
+    const user=req.body.user;
 
-    // const newPost=new Post({
-    //     title,
-    //     bodi
-    // });
+    const newPost=new Post({
+        title,
+        bodi,
+        date,
+        user
+    });
 
-     const newPost=new Post(req.body);
+     
     newPost.save().then(()=>res.json('post added'))
                     .catch(err=>res.status(400).json('error'+err));
 

@@ -9,3 +9,6 @@ router.route('/').get((req,res)=>{
 router.route('/add').post((req,res)=>{
     const username=req.body.UserLogin.id;
 })
+
+
+module.exports=router;

@@ -2,10 +2,22 @@ const mongoose =require('mongoose');
 const {ObjectId}=mongoose.Schema.Types;
 
 const userModel=new mongoose.Schema({
-   UserLogin:{
-    type: ObjectId,
-    ref : 'Login'
-   },
+    userName : {
+        type: String,
+        required:true,
+        unique:true,
+        trim:true,
+        minlength:5
+
+    },
+    password : {
+        type:String,
+        required:true,
+        trim:true,
+        minlength:8,
+        select:false
+    },
+    
     FirstName:{
         type: String,
         required:true,
@@ -34,7 +46,13 @@ const userModel=new mongoose.Schema({
         required:true,
         default:'User',
         enum : ['user','admin','root']
-    }
+    },
+    Posts: [
+        {
+          type: ObjectId,
+          ref :'Post'
+        }
+    ]
 
 },{timestamps:true})
 

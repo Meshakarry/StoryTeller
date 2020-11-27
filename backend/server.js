@@ -19,7 +19,7 @@ const postRouter=require('./routes/posts');
 const userRouter=require('./routes/users');
 
 app.use('/posts',postRouter);
-// app.use('/user',userRouter);
+app.use('/users',userRouter);
 
 
 
