@@ -7,8 +7,18 @@ router.route('/').get((req,res)=>{
 })
 
 router.route('/add').post((req,res)=>{
-    const username=req.body.UserLogin.id;
-})
+    const userName=req.body.userName;
+    const password=req.body.userName;
+
+
+    const user=new User({
+        userName
+    });
+
+    user.save().
+    then(()=>res.json("dodan korisnik"))
+    .catch(err=>res.status(400).json('Error'+err));
+});
 
 
 module.exports=router;
