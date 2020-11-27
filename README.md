@@ -1,3 +1,0 @@
-# First mern stack app
-
-Some information...
