@@ -33,6 +33,40 @@ router.route('/add').post((req, res) => {
 
 });
 
+router.route('/:id').get((req,res)=> {
+      Post.findById(req.params.id)
+      .then(post=>res.json(post))
+      .catch(err => res.status(400).json('Error' + err));
+
+})
+
+
+router.route('/:id').delete((req,res)=>{
+    Post.findByIdAndDelete(req.params.id)
+    .then(()=>res.json("uspjesno obrisan post"))
+    .catch(err => res.status(400).json('Error' + err))
+})
+
+router.route('/update/:id').post((req,res)=>{
+      Post.findById(req.params.id)
+      .then(post=>{
+        post.title=req.body.title,
+        post.bodi=req.body.bodi,
+        post.date=Date(req.body.date)
+       
+         post.save()
+         .then(()=>res.json('Uspjesno editovan post'))
+         .catch(err => res.status(400).json('Error' + err))
+       })
+       .catch(err => res.status(400).json('Error' + err))
+       
+
+        
+       
+
+     
+});
+
 
 
 module.exports = router;
