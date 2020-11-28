@@ -48,12 +48,24 @@ router.route('/:id').get((req,res)=>{
     })
 })
 
-router.route('/:id').delete((req,res)=>{
-    User.findByIdAndDelete(req.params.id).then((user)=>{
-        res.json('Uspjesno obrisan').
-        catch((err)=>res.json('Eror'+err))
+// router.route('/:id').delete((req,res)=>{
+//     User.findByIdAndDelete(req.params.id).then((user)=>{
+//         res.json('Uspjesno obrisan').
+//         catch((err)=>res.json('Eror'+err))
+//     })
+// })
+
+
+router.route('/:id').delete(async(req,res)=>{
+    try{
+    await User.remove(req.params.id);
+        res.json('Uspjesno obrisan');
+    }catch(err){
+        res.json('Error'+err);
+    }
     })
-})
+        
+    
 router.route('/update/:id').post((req,res)=>{
 
     User.findById(req.params.id).then((user)=>{
