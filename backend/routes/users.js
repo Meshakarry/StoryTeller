@@ -10,9 +10,9 @@ router.route('/').get( async (req,res)=>{
     try{
    const posts= await User.find();
    res.json(posts);
-    }catch(err){
-        res.json('Error'+err)
-    }
+}catch(err){
+    res.json('Error'+err)
+}
 })
 
 router.route('/add').post((req,res)=>{
