@@ -9,7 +9,7 @@ const NavigationItems = () => {
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class='nav '>
-                        <NavigationItem link='#'>Home</NavigationItem>
+                        <NavigationItem link='/home' >Home</NavigationItem>
                         <NavigationItem link='#'>Profile</NavigationItem>
                         <NavigationItem link='#'>Find Friends</NavigationItem>
                     </ul>
