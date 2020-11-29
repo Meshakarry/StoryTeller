@@ -2,7 +2,7 @@ import './App.css';
 import React, { Component } from 'react'
 import Layout from './hoc/Layout/Layout'
 import NavigationItems from './component/navigation/navigationItems/NavigationItems'
-import 'bootstrap/dist/css/bootstrap.min.css'
+ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
   render() {
