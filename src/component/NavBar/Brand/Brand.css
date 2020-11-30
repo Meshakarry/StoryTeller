@@ -1,0 +1,12 @@
+.navbar-brand{
+    margin-left: 40px;
+    margin-right: 40px; 
+    /* font-family: brush script MT; */
+    font-family: 'Times New Roman', Times, serif;    
+}
+@media(min-width : 300px)
+{
+    .navbar-brand{
+    margin: auto;
+    }
+}

@@ -1,3 +1,7 @@
-.NavBar{
-    width: max-content;
+
+@media(min-width:500px)
+{
+    .navbar-nav{
+        margin-left: 30px;
+    }
 }

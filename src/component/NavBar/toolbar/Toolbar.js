@@ -1,16 +1,20 @@
-import header from 'react'
+import React from 'react'
 import NavigationItems from '../navigationItems/NavigationItems'
+import 'bootstrap/dist/css/bootstrap.min.css'
+
 const Toolbar = () => {
     return (
+
         <header>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                {/* <div class="collapse navbar-collapse" id="navbarSupportedContent"> */}
-                   <NavigationItems/>
-
-                {/* </div> */}
-            </nav>
-
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+           
+               <NavigationItems/>
+        
+         
+        </nav>
+        
         </header>
     )
 }
 export default Toolbar;
+
