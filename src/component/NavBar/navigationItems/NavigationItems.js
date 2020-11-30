@@ -1,7 +1,6 @@
 import React from 'react'
 import NavigationItem from '../navigationItem/NavigationItem'
 import './NavigationItems.css'
-import 'bootstrap/dist/css/bootstrap.min.css'
 import Brand from '../Brand/Brand'
 
 const NavigationItems = () => {
@@ -9,8 +8,8 @@ const NavigationItems = () => {
         <React.Fragment>
             
             <Brand />
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <ul class='navbar-nav'>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class='navbar-nav mr-auto mt-2 mt-lg-0'>
 
                 <NavigationItem link='/home' >Home</NavigationItem>
                 <NavigationItem link='#'>Profile</NavigationItem>
