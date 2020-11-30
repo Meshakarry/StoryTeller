@@ -1,0 +1,21 @@
+.button{
+    font-family: Raleway-SemiBold;
+    font-size: 20px;
+    letter-spacing: 1px;
+    line-height: 15px;
+    border: 2px solid rgba(58, 133, 191, 0.75);
+    border-radius: 40px;
+   padding: 10px;
+    transition: all 0.3s ease 0s;
+    
+}
+.btn-primary{
+background-color: rgb(128, 0, 255);
+}
+.btn-light{
+background: transparent;
+color:rgb(86, 110, 116)
+}
+.btn-light:hover{
+    background:	rgb(199, 203, 204);
+}
