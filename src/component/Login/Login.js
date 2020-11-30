@@ -1,25 +1,43 @@
-import React from "react";
-
+import React, { useState } from "react";
+import {Form,Button} from "semantic-ui-react";
+import './Login.css';
 
 
 export default function Login(){
-    
+      
+  
+      function handleChange(){
+        return console.log("kurcina");
+      }
+      
     return (
-          <form>
-            <div className="form-group">
-           <label>Username</label>
-             <input type="text" placeholder="username" className='form-control'></input> 
-             <small className="form-text text-muted" >We will keep your privacy</small>
-             </div>
-             <div className="form-group">
-           <label>Password</label>
-             <input type="text" placeholder="password" className='form-control'></input> 
-            
-             </div>
+      <React.Fragment>
+      <p>Ovdje ide slika neka nesto</p>
+      <h3>Prijavite se na storyteller</h3>
+      <div className="form">
+      <Form className="forma">
+        
+        <Form.Field>
+          <Form.Input className='input_user' fluid label="Username" placeholder="Username"  />
+        </Form.Field>
+        <Form.Field>
+          <Form.Input fluid label="Password" placeholder="Password"
+          
+           />
+        </Form.Field>
 
-             
-             
-          </form>
+        <Form.Button attached='bottom'   
+        style={{color:"white",
+        backgroundColor:" rgb(128, 0, 255)"}} 
+        className="frm-button"
+          
+           > Prijava</Form.Button>
+      
+
+      </Form>
+     
+          </div>
+          </React.Fragment>
     )
 
 
