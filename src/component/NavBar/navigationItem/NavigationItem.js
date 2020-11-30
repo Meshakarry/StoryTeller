@@ -1,13 +1,13 @@
 import React from 'react'
 import './NavigationItem.css'
-// import {NavLink} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 const navigationItem=(props)=>(
     <React.Fragment>
-        <li class='nav-item'>
-            <a class='nav-link' href={props.link} exact={props.exact}>
+        <li className='nav-item'>
+            <Link className='nav-link' to={props.link}>
                 {props.children}
-            </a>
+            </Link>
         </li>
     </React.Fragment>
 )

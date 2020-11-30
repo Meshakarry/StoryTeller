@@ -8,8 +8,8 @@ const NavigationItems = () => {
         <React.Fragment>
             
             <Brand />
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul class='navbar-nav mr-auto mt-2 mt-lg-0'>
+            <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul className='navbar-nav mr-auto mt-2 mt-lg-0'>
 
                 <NavigationItem link='/home' >Home</NavigationItem>
                 <NavigationItem link='#'>Profile</NavigationItem>
