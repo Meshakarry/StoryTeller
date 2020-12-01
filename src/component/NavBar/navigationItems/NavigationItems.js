@@ -11,14 +11,18 @@ const NavigationItems = () => {
         { title: `About us`, path: `/About-us` },
         { title: `Contact`, path: `/Contact` },
     ]
-    const useStyles=makeStyles({
-        navDisplayFlex:{
-            display:'flex',
-            justifyContent:'space-between'
-        }
-    })
+    const useStyles = makeStyles((theme) => ({
 
-    const classes=useStyles();
+        navDisplayFlex: {
+           display:'flex',
+           justifyContent:'center',
+          
+            [theme.breakpoints.down('xs')]: {
+                display:'block'
+            }
+        }}))
+
+    const classes = useStyles();
     return (
         <React.Fragment>
 

@@ -13,14 +13,14 @@ class App extends Component {
   render() {
     return (
       <div style={{ height: '100%'}}>
+        <Layout>
           <Route path="/Nesto" component={Nesto}></Route>
-        {/* <Layout>
           <Route path="/home" component={Home}></Route>
           <Route path="/Login" component={Login}></Route>
           <Route path="/Registracija" component={Registracija}></Route>
 
 
-        </Layout> */}
+        </Layout>
       </div>
     )
   }
