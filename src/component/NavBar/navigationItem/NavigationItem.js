@@ -1,14 +1,37 @@
 import React from 'react'
 import './NavigationItem.css'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { ListItem, ListItemText } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+const NavigationItem = (props) => {
+    const useStyles = makeStyles({
 
-const navigationItem=(props)=>(
+        linkText: {
+            textDecoration: 'none',
+            textTransform: 'uppercase',
+            color: 'white',
+            '&:hover': {
+                textDecoration: 'none',
+                textTransform: 'uppercase',
+                color: 'white',
+
+            },
+        }
+
+    })
+
+    const classes = useStyles();
+    return(
     <React.Fragment>
-        <li className='nav-item'>
-            <Link className='nav-link' to={props.link}>
-                {props.children}
-            </Link>
-        </li>
+        <Link to={props.Link} className={classes.linkText}>
+
+            <ListItem button>
+                <ListItemText primary={props.children} />
+            </ListItem>
+
+
+        </Link>
     </React.Fragment>
-)
-export default navigationItem;
+    )
+}
+export default NavigationItem;
