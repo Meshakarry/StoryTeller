@@ -8,11 +8,9 @@ const NavigationItem = (props) => {
 
         linkText: {
             textDecoration: 'none',
-            fontFamily:'Times New Roman',
             color: 'white',
             '&:hover': {
                 textDecoration: 'none',
-                
                 color: 'white',
             },
             [theme.breakpoints.down('xs')]: {
@@ -24,6 +22,7 @@ const NavigationItem = (props) => {
                 },
             }
         }
+
         
 
     }))
@@ -34,7 +33,7 @@ const NavigationItem = (props) => {
             <Link to={props.Link} className={classes.linkText}>
 
                 <ListItem button>
-                    <ListItemText primary={props.children} className={classes.root}/>
+                    <ListItemText  primary={props.children} />
                 </ListItem>
 
 

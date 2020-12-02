@@ -11,6 +11,7 @@ const SideDrawer = () => {
   const useStyles = makeStyles({
     list: {
       width: 250,
+      
     }
   })
   const classes = useStyles();
@@ -36,6 +37,7 @@ const SideDrawer = () => {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
+      <h4 style={{padding:'10px',textAlign:'center'}}>StoryTeller</h4>
       <NavigationItems/>
     </div>
   )

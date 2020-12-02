@@ -18,7 +18,8 @@ const NavigationItems = () => {
            justifyContent:'center',
           
             [theme.breakpoints.down('xs')]: {
-                display:'block'
+                display:'block',
+               
             }
         }}))
 
@@ -28,7 +29,8 @@ const NavigationItems = () => {
 
             <List component="nav" aria-labelledby="main navigation" className={classes.navDisplayFlex}>
                 {navLinks.map(({ title, path }) => (
-                    <NavigationItem Link={path}>{title}</NavigationItem>
+                   
+                    <NavigationItem  key={title} Link={path}>{title}</NavigationItem>
                 ))}
 
 
