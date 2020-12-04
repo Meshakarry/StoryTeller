@@ -16,17 +16,18 @@ router.route('/').get( async (req,res)=>{
 })
 
 router.route('/add').post((req,res)=>{
-    const userName=req.body.userName;
-    const password=req.body.password;
-    const FirstName=req.body.FirstName;
-    const LastName=req.body.LastName;
-    const PhoneNumber=req.body.PhoneNumber;
-    const BirthDate=req.body.BirthDate;
-    const Role=req.body.Role;
+    const user=req.body;
+    const userName=user.userName;
+    const password=user.password;
+    const FirstName=user.FirstName;
+    const LastName=user.LastName;
+    const PhoneNumber=user.PhoneNumber;
+    const BirthDate=user.BirthDate;
+    const Role=user.Role;
 
+   
 
-
-    const user=new User({
+    const userr=new User({
         userName,
         password,
         FirstName,
@@ -36,7 +37,7 @@ router.route('/add').post((req,res)=>{
         Role
     });
 
-    user.save().
+    userr.save().
     then(()=>res.json("dodan korisnik"))
     .catch(err=>res.status(400).json('Error'+err));
 });
