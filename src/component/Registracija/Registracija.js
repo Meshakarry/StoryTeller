@@ -1,14 +1,23 @@
 import axios from "axios";
 import React from "react";
 import '../Registracija/Registracija.css'
+import DatePicker, { registerLocale } from "react-datepicker";
  
+import "react-datepicker/dist/react-datepicker.css";
+
+//DODAT MESSAGE ZA ERROR I SUCCESS
+//DODAT LINK ZA LOGIN AKO SI VEC REGISTROVAN
+//DODAT MATERIAL UI
+//URADIT CSS
+//HASHIRAT PASSWORD (OVDJE ILI NA MODELIMA)
+//zabraniti korisniku da dva puta pritisne login
 
 const Init_user={
-  Firstname:"",
-  Lastname:"",
-  Username:"",
-  Password:"",
-  Phonenumber:"",
+  FirstName:"",
+  LastName:"",
+  userName:"",
+  password:"",
+  PhoneNumber:"",
   BirthDate:new Date(),
 
 }
@@ -18,10 +27,12 @@ export default function Registracija(props){
   const[user,setUser]=React.useState(Init_user);
   const[disabled,setDisabled]=React.useState(true);
   const[loading,setLoading]=React.useState(false);
+  const [startDate, setStartDate] = React.useState(user.BirthDate);
     
   function handleChange(event){
   
     const{name,value}=event.target;
+      
     //da ima uvid u prethodno stanje da se ne bi desilo da se pogresne vrijednosti 
     //smjeste u bazu
     setUser(prevState=>({...prevState,[name]:value}));
@@ -61,8 +72,8 @@ export default function Registracija(props){
             <input type="text"
              placeholder="Firstname"
               required 
-              name="Firstname" 
-              value={user.Firstname}
+              name="FirstName" 
+              value={user.FirstName}
               onChange={handleChange}
               />
             <br/>
@@ -73,8 +84,8 @@ export default function Registracija(props){
             <input type="text"
              placeholder="Lastname" 
              required 
-             name="Lastname"
-              value={user.Lastname}
+             name="LastName"
+              value={user.LastName}
               onChange={handleChange}
               
               />
@@ -85,8 +96,8 @@ export default function Registracija(props){
             <input type="text"
              placeholder="Username"
              required
-              name="Username"
-               value={user.Username}
+              name="userName"
+               value={user.userName}
               onChange={handleChange}
                
                />
@@ -99,8 +110,8 @@ export default function Registracija(props){
             
             placeholder="password"
              required 
-             name="Password" 
-             value={user.Password}
+             name="password" 
+             value={user.password}
              onChange={handleChange}
              
              />
@@ -112,8 +123,8 @@ export default function Registracija(props){
             <input type="text" 
             placeholder="Phonenumber"
              required
-              name="Phonenumber"
-               value={user.Phonenumber}
+              name="PhoneNumber"
+               value={user.PhoneNumber}
               onChange={handleChange}
                
                />
@@ -121,13 +132,14 @@ export default function Registracija(props){
             <label>BirthDate</label>
             <br/>
 
-            <input type="date" name="begin" 
-            placeholder="dd-mm-yyyy" 
-            name="Birthdate" 
-            value={user.BirthDate}
-            onChange={handleChange}
+            <DatePicker selected={startDate} 
+              onChange={date=>setStartDate(date)}
+              
+              
+          
+            
+             />
 
-          /> 
             <br/>
             
 

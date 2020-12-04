@@ -44,7 +44,7 @@ const userModel=new mongoose.Schema({
     Role : {
         type: String,
         required:true,
-        default:'User',
+        default:'user',
         enum : ['user','admin','root']
     },
     Posts: [
