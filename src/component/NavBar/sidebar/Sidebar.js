@@ -1,7 +1,7 @@
 import * as React from "react"
 import { IconButton, List, ListItem, ListItemText, Drawer } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
-import { Menu } from "@material-ui/icons"
+import {Menu}   from "@material-ui/icons"
 import { useState } from "react"
 import NavigationItems from '../navigationItems/NavigationItems'
 
