@@ -39,7 +39,7 @@ module.exports.registration_post = async (req, res) => {
     }
     catch (err) {
        let error= HandleErrors(err);
-        res.status(400).json(error);
+        res.json(error);
     }
 
 }
