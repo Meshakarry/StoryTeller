@@ -1,5 +1,6 @@
 const router=require('express').Router();
 let User=require('../models/User.model');
+const userControler=require('../controler/userControler')
 
 // router.route('/').get((req,res)=>{
 //     User.find().then(users=>res.json(users))
@@ -15,31 +16,7 @@ router.route('/').get( async (req,res)=>{
 }
 })
 
-router.route('/add').post((req,res)=>{
-    const userName=req.body.userName;
-    const password=req.body.password;
-    const FirstName=req.body.FirstName;
-    const LastName=req.body.LastName;
-    const PhoneNumber=req.body.PhoneNumber;
-    const BirthDate=req.body.BirthDate;
-    const Role=req.body.Role;
-
-
-
-    const user=new User({
-        userName,
-        password,
-        FirstName,
-        LastName,
-        PhoneNumber,
-        BirthDate,
-        Role
-    });
-
-    user.save().
-    then(()=>res.json("dodan korisnik"))
-    .catch(err=>res.status(400).json('Error'+err));
-});
+router.post('/add',userControler.registration_post);
 
 router.route('/:id').get((req,res)=>{
     User.findById(req.params.id).then((user)=>{
