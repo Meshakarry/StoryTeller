@@ -1,0 +1,13 @@
+div{
+    text-align: center;
+    display: block;
+}
+form{
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+button{
+    float: right;
+}

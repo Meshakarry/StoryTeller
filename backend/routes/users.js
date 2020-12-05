@@ -16,7 +16,35 @@ router.route('/').get( async (req,res)=>{
 }
 })
 
+
 router.post('/add',userControler.registration_post);
+
+router.route('/add').post((req,res)=>{
+    const user=req.body;
+    const userName=user.userName;
+    const password=user.password;
+    const FirstName=user.FirstName;
+    const LastName=user.LastName;
+    const PhoneNumber=user.PhoneNumber;
+    const BirthDate=user.BirthDate;
+    const Role=user.Role;
+
+   
+
+    const userr=new User({
+        userName,
+        password,
+        FirstName,
+        LastName,
+        PhoneNumber,
+        BirthDate,
+        Role
+    });
+
+    userr.save().
+    then(()=>res.json("dodan korisnik"))
+    .catch(err=>res.status(400).json('Error'+err));
+});
 
 router.route('/:id').get((req,res)=>{
     User.findById(req.params.id).then((user)=>{

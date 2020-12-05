@@ -1,35 +1,23 @@
 
-
 .forma{
-    width:30%;
-    display: inline-block;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: left;
-}
-div.form{
-    display: block;
-    text-align: center;
-
-}
+   
+    max-width: 500px;
+    margin: auto;
+    
+    padding: 10px;
+   
+    
+} 
+ div.form{
+   
+  text-align: center;
+  display: block;
+ 
+} 
 h3,p{
-    margin-left: auto;
-    margin-right: auto;
+
     text-align: center;
-
 }
-.frm-button{
-
-    color:white;
-}
-.frm-button:hover{
-    background-color: rgb(128, 0, 255);
-}
-div.field.input_user{
 
 
-    outline: 0;
-    border: 0 0 2px;
-    border-color:blue
 
-}
