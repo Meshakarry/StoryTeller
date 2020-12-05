@@ -1,7 +1,7 @@
 let User = require('../models/User.model');
 const HandleErrors = (err) => {
     const errors = {};
-    if(err.code=11000){
+    if(err.code===11000){
         errors.userName="Username vec postoji";
         return errors;
     }
@@ -25,7 +25,7 @@ module.exports.registration_post = async (req, res) => {
 
 
     try {
-        const user = await User.create({
+        await User.create({
             userName,
             password,
             FirstName,
