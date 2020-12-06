@@ -1,7 +1,10 @@
 let User = require('../models/User.model');
 const jwt=require('jsonwebtoken');
+
+
+
 const HandleErrors = (err) => {
-    const errors = {};
+    let errors = {};
     if(err.code===11000){
         errors.userName="Username vec postoji";
         return errors;
@@ -42,14 +45,17 @@ module.exports.registration_post = async (req, res) => {
             BirthDate,
             Role
         });
+        
         const token=createToken(user._id);
-        res.cookie('jwt',token);
-        res.status(201).json({user : user._id});
+       
+        res.cookie('jwt',token,{httpOnly:true,maxAge:maxAge*1000});
+        res.status(201).json({user : user});
 
     }
     catch (err) {
        let error= HandleErrors(err);
         res.json(error);
+        
     }
 
 }
