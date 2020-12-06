@@ -11,3 +11,15 @@ form{
 button{
     float: right;
 }
+h2{
+    text-align: center;
+}
+label{
+    text-align: left;
+    color:#000080;
+}
+/* .frm-button{
+    background-color:#000080;
+    color:gold
+
+} */

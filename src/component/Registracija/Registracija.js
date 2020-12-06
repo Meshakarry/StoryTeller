@@ -1,9 +1,11 @@
-import axios from "axios";
 import React from "react";
-import '../Registracija/Registracija.css'
+ import '../Registracija/Registracija.css'
 import DatePicker, { registerLocale } from "react-datepicker";
  
 import "react-datepicker/dist/react-datepicker.css";
+import RegState from "./Registracija_state"
+import { FormControl, Input, InputLabel } from "@material-ui/core";
+
 
 //DODAT MESSAGE ZA ERROR I SUCCESS
 //DODAT LINK ZA LOGIN AKO SI VEC REGISTROVAN
@@ -11,50 +13,17 @@ import "react-datepicker/dist/react-datepicker.css";
 //URADIT CSS
 //HASHIRAT PASSWORD (OVDJE ILI NA MODELIMA)
 //zabraniti korisniku da dva puta pritisne login
+  
 
-const Init_user={
-  FirstName:"",
-  LastName:"",
-  userName:"",
-  password:"",
-  PhoneNumber:"",
-  BirthDate:new Date(),
-
-}
 export default function Registracija(props){
   
+  const{handleChange,user,handleSubmit,loading}=RegState();
   
-  const[user,setUser]=React.useState(Init_user);
   const[disabled,setDisabled]=React.useState(true);
-  const[loading,setLoading]=React.useState(false);
   const [startDate, setStartDate] = React.useState(user.BirthDate);
     
-  function handleChange(event){
   
-    const{name,value}=event.target;
-      
-    //da ima uvid u prethodno stanje da se ne bi desilo da se pogresne vrijednosti 
-    //smjeste u bazu
-    setUser(prevState=>({...prevState,[name]:value}));
-      }
 
-  async function handleSubmit(event){
-         event.preventDefault();
-       try{
-          setLoading(true);
-          const url="http://localhost:5000/users/add";
-          const payload={...user};
-            const response=await axios.post(url,payload);
-            console.log(response.data);
-       }
-       catch(err){
-         console.error("error in adding new user "+ err);
-       }
-       finally{
-        setLoading(false);
-       }
-         
-  }
 
         React.useEffect(()=>{
           //za objekat tipa User provjerava da li su atributi svi popunjeni 
@@ -65,35 +34,52 @@ export default function Registracija(props){
 
  return(
         <div>
-          <form onSubmit={handleSubmit}  >
-            <label>Firstname</label>
-            <br/>
 
-            <input type="text"
+          <h2>Naslovetina neka nesto jebes ga</h2>
+          <form onSubmit={handleSubmit}>
+          
+
+           <FormControl>
+          <InputLabel htmlFor="firstname">FirstName</InputLabel>
+           
+          <Input 
+           id="firstname"
+            type="text"
              placeholder="Firstname"
               required 
               name="FirstName" 
               value={user.FirstName}
               onChange={handleChange}
-              />
-            <br/>
+              id="firstname" />
 
-            <label>Lastname</label>
-            <br/>
+            
+            
+</FormControl>
+<br/>
+<FormControl>
+          <InputLabel htmlFor="lastname">LastName</InputLabel>
+            
+           <Input 
+          id="lastname"
+          type="text"
+          placeholder="Lastname" 
+          required 
+          name="LastName"
+           value={user.LastName}
+           onChange={handleChange}
+          />
 
-            <input type="text"
-             placeholder="Lastname" 
-             required 
-             name="LastName"
-              value={user.LastName}
-              onChange={handleChange}
-              
-              />
-            <br/>
-            <label>Username</label>
-            <br/>
+           
+          </FormControl>
+          <br/>
+          <FormControl>
+           <InputLabel htmlFor="username">UserName</InputLabel>
+          
+          
 
-            <input type="text"
+            <Input 
+            id="username"
+            type="text"
              placeholder="Username"
              required
               name="userName"
@@ -101,12 +87,16 @@ export default function Registracija(props){
               onChange={handleChange}
                
                />
+            </FormControl>
             <br/>
+            <FormControl>
 
-            <label>Password</label>
-            <br/>
-
-            <input type="password"
+          <InputLabel htmlFor="password">Password</InputLabel>
+            
+            
+           
+            <Input 
+            type="password"
             
             placeholder="password"
              required 
@@ -115,12 +105,16 @@ export default function Registracija(props){
              onChange={handleChange}
              
              />
-            <br/>
+           </FormControl>
+           <br/>
+           <FormControl>
+           <InputLabel htmlFor="phonenumber">Phonenumber</InputLabel>
+          
+            
 
-            <label>Phonenumber</label>
-            <br/>
-
-            <input type="text" 
+            <Input 
+            id="phonenumber"
+            type="text" 
             placeholder="Phonenumber"
              required
               name="PhoneNumber"
@@ -128,11 +122,15 @@ export default function Registracija(props){
               onChange={handleChange}
                
                />
-            <br/>
-            <label>BirthDate</label>
-            <br/>
-
-            <DatePicker selected={startDate} 
+           </FormControl>
+           <br/>
+           <FormControl>
+             
+             <label>BirthDate</label>
+           
+            <DatePicker 
+           
+            selected={startDate} 
               onChange={date=>setStartDate(date)}
               
               
@@ -140,11 +138,13 @@ export default function Registracija(props){
             
              />
 
+            </FormControl>
             <br/>
             
 
-          <input type="submit" disabled={loading || disabled} ></input>
-          </form> 
+
+          <input type="submit" className="frm-button" disabled={loading || disabled}  ></input>
+          </form>
           </div>
   )
 }

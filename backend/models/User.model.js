@@ -23,13 +23,13 @@ const userModel=new mongoose.Schema({
         type: String,
         required:[true,"Molimo unesite Ime"],
         trim:true,
-        minlength:[2, "Ime mora imati minimalno 2 karakera"],
+        minlength:[2, "Ime mora imati minimalno 2 karaktera"],
     },
     LastName:{
         type: String,
         required:[true,"Molimo unesite Prezime"],
         trim:true,
-        minlength:[2, "Prezime mora imati minimalno 2 karakera"],
+        minlength:[2, "Prezime mora imati minimalno 2 karaktera"],
     },
     PhoneNumber:{
         type: String,
@@ -44,7 +44,7 @@ const userModel=new mongoose.Schema({
     },
     Role : {
         type: String,
-        required:[true,"Molimo unesite Ulogu"],
+        
         default:'user',
         enum : ['user','admin','root']
     },
