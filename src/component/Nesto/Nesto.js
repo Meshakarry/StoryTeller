@@ -1,8 +1,4 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles';
-import InfoIcon from '@material-ui/icons/Info';
-import { AppBar, List, ListItem, ListItemText, ListItemIcon } from '@material-ui/core';
-import Header from '../NavBar/toolbar/Toolbar'
 const Nesto = () => {
     return (
         <div style={{ width: '100%', height: '100%', backgroundColor: '#242582' }}>

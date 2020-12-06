@@ -1,4 +1,5 @@
 let User = require('../models/User.model');
+const jwt=require('jsonwebtoken');
 const HandleErrors = (err) => {
     const errors = {};
     if(err.code===11000){
@@ -13,6 +14,13 @@ const HandleErrors = (err) => {
     return errors;
 
 }
+
+const maxAge=3*24*60*60;
+const createToken=(id)=>{
+    return jwt.sign({id},'ovo je neki secret',{
+        expiresIn:maxAge
+    })
+}
 module.exports.registration_post = async (req, res) => {
 
     const userName = req.body.userName;
@@ -25,7 +33,7 @@ module.exports.registration_post = async (req, res) => {
 
 
     try {
-        await User.create({
+       const user= await User.create({
             userName,
             password,
             FirstName,
@@ -34,7 +42,9 @@ module.exports.registration_post = async (req, res) => {
             BirthDate,
             Role
         });
-        res.status(201).json("dodavanje uspjelo");
+        const token=createToken(user._id);
+        res.cookie('jwt',token,{httpOnly:true,maxAge:maxAge*1000});
+        res.status(201).json(user._id);
 
     }
     catch (err) {

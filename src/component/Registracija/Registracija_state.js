@@ -10,7 +10,10 @@ const Init_user={
     BirthDate:new Date(),
     
 }
-
+const headers = {
+  'Content-Type': 'application/json',
+  'Authorization': 'JWT fefege...'
+}
 const RegState=() => {
     
     const[user,setUser]=React.useState(Init_user);
@@ -20,6 +23,7 @@ const RegState=() => {
 
     //da ima uvid u prethodno stanje da se ne bi desilo da se pogresne vrijednosti 
     //smjeste u bazu
+    
   function handleChange(event){
     const{name,value}=event.target;
     setUser(prevState=>({...prevState,[name]:value}));
@@ -28,9 +32,12 @@ const RegState=() => {
         event.preventDefault();
       try{
          setLoading(true);
+         console.log("kliknuto");
          const url="http://localhost:5000/users/add";
          const payload={...user};
-           const response=await axios.post(url,payload);
+           const response=await axios.post(url,payload,{
+              headers:{ 'Content-Type': 'application/json'}
+           });
            console.log(response.data);
       }
       catch(err){
