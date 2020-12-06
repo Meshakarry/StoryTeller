@@ -32,7 +32,6 @@ const RegState=() => {
         event.preventDefault();
       try{
          setLoading(true);
-         console.log("kliknuto");
          const url="http://localhost:5000/users/add";
          const payload={...user};
            const response=await axios.post(url,payload,{

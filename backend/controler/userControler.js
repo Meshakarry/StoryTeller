@@ -43,8 +43,8 @@ module.exports.registration_post = async (req, res) => {
             Role
         });
         const token=createToken(user._id);
-        res.cookie('jwt',token,{httpOnly:true,maxAge:maxAge*1000});
-        res.status(201).json(user._id);
+        res.cookie('jwt',token);
+        res.status(201).json({user : user._id});
 
     }
     catch (err) {
