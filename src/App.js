@@ -16,10 +16,10 @@ class App extends Component {
     return (
       <div style={{ height: '100%'}}>
         <Layout>
-          <Route path="/Nesto" component={Nesto}></Route>
+          <Route path="/home" component={Home}></Route>
           <Route path="/Regist" component={Regist}></Route>
           <Route path="/Log" component={Log}></Route>
-          <Route path="/home" component={Home}></Route>
+          <Route path="/Nesto" component={Nesto}></Route>
           <Route path="/Login" component={Login}></Route>
           <Route path="/Registracija" component={Registracija}></Route>
 

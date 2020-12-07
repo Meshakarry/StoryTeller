@@ -1,11 +1,16 @@
 
 .forma input{
-    width: 250px;
+    
+    margin: auto;
 }
 .forma p{
     color: black;
     margin-bottom: 5px;
 }
 .tekst{
-    color: red;
+    color: rgb(255, 60, 0);
+    
+}
+.forma button{
+    margin: auto;
 }

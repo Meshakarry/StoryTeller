@@ -9,6 +9,15 @@ const HandleErrors = (err) => {
         errors.userName="Username vec postoji";
         return errors;
     }
+    if(err.message==="Invalid username"){
+        errors.userName=err.message;
+    }
+
+    if(err.message==="Invalid Password"){
+        errors.password=err.message;
+    }
+
+
     if (err.message.includes('User validation failed')) {
         Object.values(err.errors).forEach(({ properties }) => {
             errors[properties.path] = properties.message;
@@ -47,7 +56,6 @@ module.exports.registration_post = async (req, res) => {
         });
         
         const token=createToken(user._id);
-       
         res.cookie('jwt',token,{httpOnly:true,maxAge:maxAge*1000});
         res.status(201).json({user : user});
 
@@ -63,10 +71,13 @@ module.exports.login_post=async (reg,res)=>{
     const {userName,password}=reg.body;
     try{
         const user=await User.login(userName,password);
+        const token=createToken(user._id);
+        res.cookie('jwt',token,{httpOnly:true,maxAge:maxAge*1000});
         res.status(200).json({user : user._id});
     }
-    catch{
-        res.status(400).json("error")
+    catch(err){
+        let eror=HandleErrors(err);
+        res.status(400).json({eror})
     }
 
 }

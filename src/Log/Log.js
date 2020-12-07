@@ -1,49 +1,66 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import './Log.css'
-const Init_user = {
 
-    userName: "",
-    password: "",
-
-
-}
+const niz=['Username','Password']
 class Log extends Component {
-    state = Init_user;
+    state = {
+        user: {
+
+            userName: "",
+            password: "",
+
+
+        },
+        eror: {
+
+            userName: "",
+            password: "",
+
+
+        }
+    }
     onChangeHandler = (event) => {
 
         let name = event.target.name;
         let value = event.target.value;
-        this.setState({ [name]: value })
+        let objekat = this.state.user;
+        objekat[name] = value;
+        this.setState({ user: objekat })
+
     }
     onSubmitHandler = (event) => {
         event.preventDefault();
-        axios.post('http://localhost:5000/users/login', this.state, { headers: { 'Content-Type': 'application/json' } })
-        .then(res=>{
-            
-            console.log(res)
-            this.props.history.push('/Nesto');        
-        })
-           
-        .catch(err => console.log(err));
+        axios.post('http://localhost:5000/users/login', this.state.user, { headers: { 'Content-Type': 'application/json' } })
+            .then(res => {
 
-        
+                console.log(res)
+                this.props.history.push('/Nesto');
+            })
+
+            .catch(err => {
+
+                this.setState({ eror: err.response.data.eror })
+            });
+
+
     }
     render() {
-        var forma = Object.keys(Init_user).map((x, i) => {
-         
-                return (
+        
+        var forma = Object.keys(this.state.user).map((x, i) => {
 
-                    <div key={i} className="form-group">
+            return (
 
-                        <label>
-                            <p>{x}</p>
-                            <input type={x==='password'?'password':'text'} className="form-control" placeholder={x} name={x} onChange={this.onChangeHandler} />
-                            <div className='tekst'>ovo je neki tekst</div>
-                        </label>
-                    </div>
-                )
-            }
+                <div key={i} className="form-group">
+
+                    <label>
+                    <p>{niz[i]}</p>
+                        <input type={x === 'password' ? 'password' : 'text'} className="form-control" placeholder={niz[i]} name={x} onChange={this.onChangeHandler} />
+                        <div className='tekst'>{this.state.eror[x]}</div>
+                    </label>
+                </div>
+            )
+        }
         )
 
         return (

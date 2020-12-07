@@ -1,69 +1,96 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
+import DatePicker from "react-datepicker";
 import './Regist.css'
-const Init_user = {
-    FirstName: "",
-    LastName: "",
-    userName: "",
-    password: "",
-    PhoneNumber: "",
-    BirthDate: new Date(),
+import "react-datepicker/dist/react-datepicker.css";
+const useri =
+    [{ name: 'First Name', type: 'text' },
+    { name: 'Last Name', type: 'text' },
+    { name: 'Username', type: 'text' },
+    { name: 'Password', type: 'password' },
+    { name: 'Phone Number', type: 'text' },
+    { name: 'Birth Date', type: 'Date' }]
+const Regist =(props)=> {
+    const[user,setUser] =useState ({
+       
 
-}
-class Regist extends Component {
-    state = Init_user;
-    onChangeHandler = (event) => {
+            FirstName: "",
+            LastName: "",
+            userName: "",
+            password: "",
+            PhoneNumber: "",
+            BirthDate: new Date()
+
+        })
+        const [error,setError]=useState({
+            error:{
+            FirstName: "",
+            LastName: "",
+            userName: "",
+            password: "",
+            PhoneNumber: "",
+            BirthDate: ""
+            }
+        })
+        const [datum,setDatum]=useState(new Date())
+   const onChangeHandler = (event) => {
 
         let name = event.target.name;
         let value = event.target.value;
-        this.setState({ [name]: value })
+       setUser(prevState=>({...prevState,[name]:value}))
     }
-    onSubmitHandler = (event) => {
-        
+
+
+   const onSubmitHandler = (event) => {
+
         event.preventDefault();
-        axios.post('http://localhost:5000/users/add', JSON.stringify(this.state), { headers: { 'Content-Type': 'application/json' } })
-        .then(res=>{
-            
-            console.log(res)
-            this.props.history.push('/Nesto');        
-        }).catch(err => console.log(err.message));
+        axios.post('http://localhost:5000/users/add',user, { headers: { 'Content-Type': 'application/json' } })
+            .then(res => {
+                console.log(res)
+                props.history.push('/Nesto');
+            }).catch(err => {
+           
+            setError({error: err.response.data })
+            });
 
-        
+
     }
-    render() {
-        var forma = Object.keys(Init_user).map((x, i) => {
-            if (x !== 'BirthDate') {
+    
+        var forma = Object.keys(user).map((x, i) => {
+            {
+                if(x!=='BirthDate'){
                 return (
-
                     <div key={i} className="form-group">
 
                         <label>
-                            <p>{x}</p>
-                            <input type={x==='password'?'password':'text'} className="form-control" placeholder={x} name={x} onChange={this.onChangeHandler} />
-                            <div className='tekst'>ovo je neki tekst</div>
+                            <p>{useri[i].name}</p>
+                            <input type={useri[i].type} className="form-control" placeholder={useri[i].name} name={x} onChange={onChangeHandler} />
+                            <div className='tekst'>{error.error[x]}</div>
                         </label>
                     </div>
                 )
             }
+        }
         })
-
         return (
             <div>
-                <form onSubmit={this.onSubmitHandler} className='forma'>
+                <form onSubmit={onSubmitHandler} className='forma'>
 
                     {forma}
-                    <div className="form-group">
-                        <label>
-                            <p>BirthDate</p>
-                            <input type='text' value="2015-03-25" name='BirthDate' className="form-control" onChange={this.onChangeHandler} />
-                            <div className='tekst'></div>
-                        </label>
+                    <div>
+                    <label>
+                    <p>Birth Date</p>
+                    <DatePicker selected={datum} onChange={date => setDatum(date)}/>
+                    
+                    </label>
                     </div>
-                    <input type="submit" value="Kraj" className="btn btn-primary" />
+                    <div>
+                    <input type="submit" value="Submit"  className="btn btn-primary"  />
+                    </div>
                 </form>
             </div >
         )
     }
-}
+
 
 export default Regist

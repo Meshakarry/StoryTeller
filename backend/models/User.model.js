@@ -75,7 +75,7 @@ userModel.statics.login=async function(userName,password)
             console.log("usao u uslov")
             return user;
         }
-        throw Error("Ivalid Password");
+        throw Error("Invalid Password");
     }
     throw Error("Invalid username");
 }
