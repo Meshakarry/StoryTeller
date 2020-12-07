@@ -7,6 +7,8 @@ import Home from './component/Home/Home';
  import Login from "./component/Login/Login";
  import Registracija from "./component/Registracija/Registracija";
 import Nesto from './component/Nesto/Nesto';
+import Regist from './Regist/Regist';
+import Log from './Log/Log';
 
 
 class App extends Component {
@@ -15,6 +17,8 @@ class App extends Component {
       <div style={{ height: '100%'}}>
         <Layout>
           <Route path="/Nesto" component={Nesto}></Route>
+          <Route path="/Regist" component={Regist}></Route>
+          <Route path="/Log" component={Log}></Route>
           <Route path="/home" component={Home}></Route>
           <Route path="/Login" component={Login}></Route>
           <Route path="/Registracija" component={Registracija}></Route>

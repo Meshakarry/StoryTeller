@@ -19,6 +19,7 @@ router.route('/').get( async (req,res)=>{
 
 
 router.post('/add',userControler.registration_post);
+router.post('/login',userControler.login_post);
 
 
 

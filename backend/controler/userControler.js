@@ -54,8 +54,19 @@ module.exports.registration_post = async (req, res) => {
     }
     catch (err) {
        let error= HandleErrors(err);
-        res.json(error);
+        res.status(400).json(error);
         
+    }
+
+}
+module.exports.login_post=async (reg,res)=>{
+    const {userName,password}=reg.body;
+    try{
+        const user=await User.login(userName,password);
+        res.status(200).json({user : user._id});
+    }
+    catch{
+        res.status(400).json("error")
     }
 
 }

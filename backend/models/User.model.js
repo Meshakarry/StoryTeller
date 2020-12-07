@@ -16,7 +16,7 @@ const userModel=new mongoose.Schema({
         required:[true,"Molimo unesite password"],
         trim:true,
         minlength:[8, "Password mora imati minimalno 8 karakera"],
-        select:false
+        
     },
     
     FirstName:{
@@ -62,4 +62,21 @@ userModel.pre('save',async function(next){
     this.password=await bcrypt.hash(this.password,salt);
     next();
 });
+
+userModel.statics.login=async function(userName,password)
+{
+    const user=await this.findOne({userName});
+    console.log(user);
+    if(user)
+    {
+        const auth=await bcrypt.compare(password,user.password);
+        if(auth)
+        {
+            console.log("usao u uslov")
+            return user;
+        }
+        throw Error("Ivalid Password");
+    }
+    throw Error("Invalid username");
+}
 module.exports=mongoose.model('User',userModel);
