@@ -1,5 +1,5 @@
 import './App.css';
-import div, { Component } from 'react'
+import React, { Component } from 'react'
 import Layout from './hoc/Layout/Layout'
 import {Route} from 'react-router-dom';
 import Home from './component/Home/Home';
