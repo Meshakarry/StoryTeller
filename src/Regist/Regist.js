@@ -24,12 +24,7 @@ const Regist =(props)=> {
         })
         const [error,setError]=useState({
             error:{
-            FirstName: "",
-            LastName: "",
-            userName: "",
-            password: "",
-            PhoneNumber: "",
-            BirthDate: ""
+               
             }
         })
         const [datum,setDatum]=useState(new Date())
